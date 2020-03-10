@@ -36,7 +36,8 @@ export default function Accordion(props) {
     const renderItem = (arr) => arr.map((item, i) => {
         const extraStyle = i % 2 ? "background-color-lightgrey" : "background-color-grey";
 
-        if (props.isSearch === "" || item.name.first.toLowerCase().indexOf(props.isSearch.toLowerCase()) !== -1) {
+        if (props.isSearch === ""
+            || item.name.first.toLowerCase().indexOf(props.isSearch.toLowerCase()) !== -1) {
             return (
                 <div className={classes.root} key={item.login.uuid} >
                     <ExpansionPanel

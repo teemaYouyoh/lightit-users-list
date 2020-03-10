@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import Accordion from "../Accordion/Accordion";
 import Popup from "../Popup/Popup";
@@ -7,53 +7,51 @@ import UserService from "../../services/UserService";
 import "./users-list.scss";
 
 export default class UsersList extends Component {
-
     UserService = new UserService();
 
     state = {
-        users : [],
-        error : false,
-        isSearch : ""
+        users: [],
+        error: false,
+        isSearch: "",
     }
 
     componentDidMount() {
         this.getUsers(10);
-    }    
+    }
 
-    getUsers = (value)=> {
+    getUsers = (value) => {
         this.UserService.getUsers(value)
             .then(this.onUsersLoaded)
             .catch(this.onError);
     }
 
-    onUsersLoaded = (users)=> {
+    onUsersLoaded = (users) => {
         this.setState({
-            users : users.results,
-            error : false,
+            users: users.results,
+            error: false,
         });
     }
 
-    onError = ()=>[
+    onError = () => {
         this.setState({
-            error : true
-        })
-    ]
+            error: true,
+        });
+    }
 
-    searchUser = (e)=> {
+    searchUser = (e) => {
         this.setState({
-            isSearch : e.target.value
+            isSearch: e.target.value,
         });
     }
 
     render() {
-  
         return (
             <div className="users-list">
                 <div className="container">
                     <div className="top-panel">
                         <Popup users={this.state.users}/>
                         <div className="search">
-                            <span className="search__title">Search</span> 
+                            <span className="search__title">Search</span>
                             <input type="text" onChange={this.searchUser}/>
                         </div>
                     </div>
@@ -67,9 +65,8 @@ export default class UsersList extends Component {
                         <span className="navigation__title"></span>
                     </div>
                     <Accordion users={this.state.users} isSearch={this.state.isSearch}/>
-                </div> 
-            </div>  
+                </div>
+            </div>
         );
     }
-    
 }
