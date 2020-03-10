@@ -1,0 +1,20 @@
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .user__info {
+        width: 170px;
+        text-align: left;
+    }
+
+    .user__image {
+        width: 170px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;   
+        text-align: center;
+    }                
+}
